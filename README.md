@@ -127,6 +127,49 @@ $terbilang->t('1,200,000');
 // satu juta dua ratus
 ```
 
+## Unit Test
+
+Untuk menjalankan unit test disarankan menggunakan phpunit yang berada pada vendor direktori. Ini adalah phpunit yang diinstall melalui composer.
+
+```
+$ ./vendor/bin/phpunit --debug
+PHPUnit 6.5.8 by Sebastian Bergmann and contributors.
+
+Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testStaticInstance' started
+Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testStaticInstance' ended
+Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testTerbilangKurangDari12' started
+Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testTerbilangKurangDari12' ended
+Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testTerbilangBelasan' started
+Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testTerbilangBelasan' ended
+Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testTerbilangPuluhan' started
+Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testTerbilangPuluhan' ended
+Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testTerbilangRatusan' started
+Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testTerbilangRatusan' ended
+Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testTerbilangRibuan' started
+Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testTerbilangRibuan' ended
+Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testTerbilangJutaan' started
+Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testTerbilangJutaan' ended
+Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testTerbilangMilyaran' started
+Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testTerbilangMilyaran' ended
+Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testTerbilangTriliunan' started
+Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testTerbilangTriliunan' ended
+Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testTerbilangDenganKoma' started
+Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testTerbilangDenganKoma' ended
+Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testAngkaKomaGanda' started
+Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testAngkaKomaGanda' ended
+Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testPemisahRibuanDenganBeberapaPemisah' started
+Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testPemisahRibuanDenganBeberapaPemisah' ended
+Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testPemisahDesimalBukanTitik' started
+Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testPemisahDesimalBukanTitik' ended
+Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testShortcutMethod' started
+Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testShortcutMethod' ended
+
+
+Time: 51 ms, Memory: 4.00MB
+
+OK (14 tests, 101 assertions)
+```
+
 ## Penulis
 
 Pustaka Terbilang ditulis oleh Rio Astamal <rio@rioastamal.net>
