@@ -1,6 +1,6 @@
 {
     "name": "rioastamal/terbilang",
-    "description": "Class untuk menterjemahkan angka ke dalam bilangan Bahasa Indonesia",
+    "description": "Sebuah pustaka untuk menterjemahkan angka ke dalam bilangan Bahasa Indonesia",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -9,6 +9,10 @@
             "email": "rio@rioastamal.net"
         }
     ],
+    "support": {
+        "email": "rio@rioastamal.net",
+        "source": "https://github.com/rioastamal/terbilang"
+    },
     "require": {
         "php": "^5.4|^7.0",
         "ext-bcmath": "*"
