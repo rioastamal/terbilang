@@ -18,6 +18,12 @@ class TerbilangTest extends TestCase
         $this->terbilang = null;
     }
 
+    public function testStaticInstance()
+    {
+        $terbilang = Terbilang::create();
+        $this->assertTrue($terbilang instanceof \RioAstamal\AngkaTerbilang\Terbilang);
+    }
+
     public function testTerbilangKurangDari12()
     {
         $terbilang = new Terbilang();
