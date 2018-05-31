@@ -1,4 +1,6 @@
-## Tentang
+[![Build Status](https://travis-ci.org/rioastamal/terbilang.svg?branch=master)](https://travis-ci.org/rioastamal/terbilang)
+
+## Tentang 
 
 Terbilang merupakan sebuah pustaka sederhana untuk menterjemahkan angka kedalam bentuk bilangan dalam Bahasa Indonesia. Terbilang dapat menterjemahkan angka hingga satuan triliun. Terbilang menggunakan extension **bcmath** untuk memproses angka yang besar sehingga tetap dapat digunakan oleh sistem yang masih 32bit.
 
