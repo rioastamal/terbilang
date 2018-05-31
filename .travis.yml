@@ -14,7 +14,10 @@ cache:
   directories:
     - $HOME/.composer/cache
 
-install: composer update --no-suggest --prefer-dist --no-interaction
+install:
+  - if [ "$SKIP_UNIT_TEST" = "true" ]; then echo "Skipping composer update..."; fi
+  - if [ "$SKIP_UNIT_TEST" != "true"]; then composer update --no-suggest --prefer-dist --no-interaction; fi
+
 script:
   - if [ "$SKIP_UNIT_TEST" = "true" ]; then echo "No unit test. done"; fi
   - if [ "$SKIP_UNIT_TEST" != "true" ]; then ./vendor/bin/phpunit --debug; fi
