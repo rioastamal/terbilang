@@ -172,7 +172,7 @@ class Terbilang
 
             return rtrim(sprintf('%s ratus %s',
                 $this->bilangan[$hasilBagi],
-                static::terjemahkanAngka($hasilMod)
+                $this->terjemahkanAngka($hasilMod)
             ));
         }
 
@@ -181,11 +181,8 @@ class Terbilang
         // Contoh 1011:
         // 1011 - 1000 = 11 => 'seribu ' + terjemahkanAngka(11)
         if ($angka < 2000) {
-            return rtrim(sprintf('seribu %s', static::terjemahkanAngka($angka - 1000)));
+            return rtrim(sprintf('seribu %s', $this->terjemahkanAngka($angka - 1000)));
         }
-
-        // Flag
-        $tidakTeridentifikasi = false;
 
         // Angka ribuan sampai ratusan ribu
         if ($angka < 1000000) {
@@ -193,8 +190,8 @@ class Terbilang
             $hasilMod = $angka % 1000;
 
             return rtrim(sprintf('%s ribu %s',
-                static::terjemahkanAngka($hasilBagi),
-                static::terjemahkanAngka($hasilMod)
+                $this->terjemahkanAngka($hasilBagi),
+                $this->terjemahkanAngka($hasilMod)
             ));
         }
 
@@ -204,8 +201,8 @@ class Terbilang
             $hasilMod = $angka % 1000000;
 
             return rtrim(sprintf('%s juta %s',
-                static::terjemahkanAngka($hasilBagi),
-                static::terjemahkanAngka($hasilMod)
+                $this->terjemahkanAngka($hasilBagi),
+                $this->terjemahkanAngka($hasilMod)
             ));
         }
 
@@ -222,8 +219,8 @@ class Terbilang
             $hasilMod = bcmod($angkaAsli, '1000000000');
 
             return rtrim(sprintf('%s milyar %s',
-                static::terjemahkanAngka($hasilBagi),
-                static::terjemahkanAngka($hasilMod)
+                $this->terjemahkanAngka($hasilBagi),
+                $this->terjemahkanAngka($hasilMod)
             ));
         }
 
@@ -233,8 +230,8 @@ class Terbilang
         $hasilMod = bcmod($angkaAsli, '1000000000000');
 
         return rtrim(sprintf('%s triliun %s',
-            static::terjemahkanAngka($hasilBagi),
-            static::terjemahkanAngka($hasilMod)
+            $this->terjemahkanAngka($hasilBagi),
+            $this->terjemahkanAngka($hasilMod)
         ));
     }
 
