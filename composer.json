@@ -1,0 +1,29 @@
+{
+    "name": "rioastamal/terbilang",
+    "description": "Class untuk menterjemahkan angka ke dalam bilangan Bahasa Indonesia",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rio Astamal",
+            "email": "rio@rioastamal.net"
+        }
+    ],
+    "require": {
+        "php": "^5.4|^7.0",
+        "ext-bcmath": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7|^6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "RioAstamal\\AngkaTerbilang\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "RioAstamal\\AngkaTerbilang\\Test\\": "tests/"
+        }
+    }
+}
