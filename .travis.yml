@@ -13,5 +13,5 @@ cache:
   directories:
     - $HOME/.composer/cache
 
-install: composer install --no-suggest --prefer-dist --no-interaction
+install: composer update --no-suggest --prefer-dist --no-interaction
 script: ./vendor/bin/phpunit --debug
