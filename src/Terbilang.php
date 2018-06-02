@@ -2,9 +2,18 @@
 /**
  * Class untuk menterjemahkan angka ke bilangan dalam Bahasa Indonesia.
  * Sebagai contoh '48' akan diterjemahkan menjadi 'empat puluh delapan'
- * dan seterusnya. Bilangan yang diterjemahkan class ini hanya sampai
- * pada penggunaan satuan triliun. Jadi 1000 triliun tidak diubah menjadi
- * 1 kuadriliun.
+ * dan seterusnya. Bilangan yang diterjemahkan class ini sampai dengan
+ * septiliun. Dimana 1 septiliun sama dengan 1.0E+32.
+ *
+ * <code>
+ *   <?php
+ *   use RioAstamal\AngkaTerbilang\Terbilang;
+ *
+ *   $terbilang = new Terbilang();
+ *   $terbilang->terbilang('2000'); // dua ribu
+ *   $terbilang->terbilang('2,000'); // dua ribu
+ *   $terbilang->terbilang('1,000,000,000,001'); // satu triliun satu
+ * </code>
  *
  * @author      Rio Astamal <rio@rioastamal.net>
  * @copyright   2018 Rio Astamal <rio@rioastamal.net>
