@@ -131,7 +131,7 @@ class Terbilang
         // 48 / 10 = 4.8 => dibulatkan -> 4 -> index ke-4 + 'puluh'
         // 48 % 10 = 8 -> index ke-8
         if ($this->lebihKecilDari($angka, '100')) {
-            $hasilBagi = floor($angka / 10);
+            $hasilBagi = $this->bulatkanKebawah($angka / 10);
             $hasilMod = $angka % 10;
 
             return rtrim(sprintf('%s puluh %s',
@@ -166,7 +166,7 @@ class Terbilang
         // 499 / 100 = 4.99 => dibulatkan -> 4 -> index ke-4 + ' ratus'
         // 499 % 100 = 99 -> terjemahkanAngka(99)
         if ($this->lebihKecilDari($angka, '1000')) {
-            $hasilBagi = floor($angka / 100);
+            $hasilBagi = $this->bulatkanKebawah($angka / 100);
             $hasilMod = $angka % 100;
 
             return rtrim(sprintf('%s ratus %s',
@@ -185,7 +185,7 @@ class Terbilang
 
         // Angka ribuan sampai ratusan ribu
         if ($this->lebihKecilDari($angka, '1000000')) {
-            $hasilBagi = floor($angka / 1000);
+            $hasilBagi = $this->bulatkanKebawah($angka / 1000);
             $hasilMod = $angka % 1000;
 
             return rtrim(sprintf('%s ribu %s',
@@ -196,7 +196,7 @@ class Terbilang
 
         // Angka jutaan sampai ratusan juta (dibawah 1 Milyar)
         if ($this->lebihKecilDari($angka, '1000000000')) {
-            $hasilBagi = floor($angka / 1000000);
+            $hasilBagi = $this->bulatkanKebawah($angka / 1000000);
             $hasilMod = $angka % 1000000;
 
             return rtrim(sprintf('%s juta %s',
@@ -209,7 +209,7 @@ class Terbilang
         // Karena angka cukup besar dan sistem 32 bit hanya sampai pada
         // kisaran 2 Milyar, maka digunakan extension BC Math.
         if ($this->lebihKecilDari($angka, '1000000000000')) {
-            $hasilBagi = floor(bcdiv($angka, '1000000000'));
+            $hasilBagi = $this->bulatkanKebawah(bcdiv($angka, '1000000000'));
             $hasilMod = bcmod($angka, '1000000000');
 
             return rtrim(sprintf('%s milyar %s',
@@ -221,7 +221,7 @@ class Terbilang
         // Angka triliunan. Angka diatas 1000 triliun tidak diubah
         // ke bentuk satuan lain seperti kuadriliun, dan seterusnya.
         if ($this->lebihKecilDari($angka, '1000000000000000000000000')) {
-            $hasilBagi = floor(bcdiv($angka, '1000000000000'));
+            $hasilBagi = $this->bulatkanKebawah(bcdiv($angka, '1000000000000'));
             $hasilMod = bcmod($angka, '1000000000000');
 
             return rtrim(sprintf('%s triliun %s',
@@ -230,7 +230,7 @@ class Terbilang
             ));
         }
 
-        $hasilBagi = floor(bcdiv($angka, '1000000000000000000000000'));
+        $hasilBagi = $this->bulatkanKebawah(bcdiv($angka, '1000000000000000000000000'));
         $hasilMod = bcmod($angka, '1000000000000000000000000');
 
         return rtrim(sprintf('%s septiliun %s',
@@ -262,9 +262,30 @@ class Terbilang
         return implode(' ', $terbilang);
     }
 
+    /**
+     * Perbandingan angka menggunakan bcmath untuk angka
+     * yang sangat besar.
+     *
+     * @param string $x Angka yang dibandingkan
+     * @param string $y Angka pembanding
+     * @return bool
+     */
     protected function lebihKecilDari($x, $y)
     {
         return bccomp($x, $y) === -1 ? true : false;
+    }
+
+    /**
+     * Pembulatan kebawah menggunakan bcmath.
+     *
+     * @param string $angka
+     * @return string
+     */
+    protected function bulatkanKebawah($angka)
+    {
+        // Tambahkan dengan 0 maka otomatis bcmath akan mengkonversi
+        // kenilai pembulatan kebawah
+        return bcadd($angka, 0);
     }
 
     /**
