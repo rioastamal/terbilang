@@ -28,19 +28,20 @@ Untuk instalasi Terbilang dapat digunakan composer atau melalui cara manual yait
 
 ### Composer
 
-Clone project terbilang dari Github.
+Pastikan `composer` sudah terinstal pada sistem anda. Lalu jalankan perintah berikut untuk menginstal Terbilang.
 
 ```
-$ git clone git@github.com:rioastamal/terbilang.git
-```
-
-Kemudian jalankan composer untuk menginstall ketergantungan paket lain.
-
-```
-$ composer install -vvv
+$ composer require rioastamal/terbilang -vvv
 ```
 
 ### Instalasi Manual
+
+Clone project Terbilang dari Github.
+
+```
+$ git clone git@github.com:rioastamal/terbilang.git
+$ cd terbilang
+```
 
 Pustaka Terbilang hanya terdiri dari sebuah file jadi cukup menggunakan `require` pada file Terbilang.php dan Terbilang sudah siap digunakan.
 
