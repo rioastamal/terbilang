@@ -1,8 +1,8 @@
 [![Build Status](https://travis-ci.org/rioastamal/terbilang.svg?branch=master)](https://travis-ci.org/rioastamal/terbilang)
 
-## Tentang 
+## Tentang
 
-Terbilang merupakan sebuah pustaka sederhana untuk menterjemahkan angka kedalam bentuk bilangan dalam Bahasa Indonesia. Terbilang dapat menterjemahkan angka hingga satuan triliun. Terbilang menggunakan extension **bcmath** untuk memproses angka yang besar sehingga tetap dapat digunakan oleh sistem yang masih 32bit.
+Terbilang merupakan sebuah pustaka sederhana untuk menterjemahkan angka kedalam bentuk bilangan dalam Bahasa Indonesia. Terbilang dapat menterjemahkan angka hingga satuan septiliun atau 1.0E+32 (32 nol). Terbilang menggunakan extension **bcmath** untuk memproses angka yang besar sehingga perhitungan dapat dilakukan melebihi maksimum `PHP_INT_MAX`.
 
 Berikut contoh singkat penggunaan Terbilang.
 
@@ -10,8 +10,11 @@ Berikut contoh singkat penggunaan Terbilang.
 <?php
 use RioAstamal\AngkaTerbilang\Terbilang;
 
-echo Terbilang::create()->terbilang(5678);
+echo Terbilang::create()->terbilang('5678');
 // lima ribu enam ratus tujuh puluh delapan
+
+echo Terbilang::create()->terbilang('5000,000,000,000,000,000,000,000,000.0021');
+// 'lima ribu septiliun koma nol nol dua satu'
 ```
 
 ## Kebutuhan
@@ -21,7 +24,7 @@ echo Terbilang::create()->terbilang(5678);
 
 ## Instalasi
 
-Untuk instalasi Terbilang dapat digunakan composer atau melalui cara manual yaitu `require`. 
+Untuk instalasi Terbilang dapat digunakan composer atau melalui cara manual yaitu `require`.
 
 ### Composer
 
@@ -44,7 +47,7 @@ Pustaka Terbilang hanya terdiri dari sebuah file jadi cukup menggunakan `require
 ```php
 <?php
 
-require '/path/ke/terbilang/src/terbilang.php';
+require '/path/ke/terbilang/src/Terbilang.php';
 ```
 
 ### Instalasi bcmath
@@ -56,7 +59,7 @@ $ php -m|grep bcmath
 bcmath
 ```
 
-Jika bcmath muncul maka extension ini sudah terinstall di sistem. Jika belum terinstall gunakan perintah berikut untuk menginstall. 
+Jika bcmath muncul maka extension ini sudah terinstall di sistem. Jika belum terinstall gunakan perintah berikut untuk menginstall.
 
 Instalasi pada Ubuntu:
 
@@ -66,27 +69,31 @@ $ sudo apt-get install php-bcmath
 
 ## Contoh
 
-Berikut beberapa contoh penggunaan pustaka Terbilang dan outputnya. Untuk contoh lebih banyak anda dapat melihat pada file tests/TerbilangTest.php.
+Berikut beberapa contoh penggunaan pustaka Terbilang dan outputnya. Argumen yang diberikan pada method terbilang() **harus** berupa string angka. Untuk contoh lebih banyak anda dapat melihat pada file tests/TerbilangTest.php.
 
 ```php
 <?php
 use RioAstamal\AngkaTerbilang\Terbilang;
 
 $terbilang = new Terbilang();
-$terbilang->terbilang(5); 
+$terbilang->terbilang('5');
 // lima
 
-$terbilang->terbilang(15);
+$terbilang->terbilang('15');
 // lima belas
 
-$terbilang->terbilang(99);
+$terbilang->terbilang('99');
 // sembilan puluh sembilan
 
-$terbilang->terbilang(787654321);
+$terbilang->terbilang('787654321');
 // tujuh ratus delapan puluh tujuh juta enam ratus lima puluh empat ribu tiga ratus dua puluh satu
 
 $terbilang->terbilang('11000000001000222');
 // sebelas ribu triliun satu juta dua ratus dua puluh dua
+
+$terbilang->terbilang('1,000,000,000,000,000,000,000,000.0001');
+// satu septiliun koma nol nol nol satu
+
 ```
 
 Terbilang juga mendukung penggunakan pemisah ribuan.
@@ -155,6 +162,8 @@ Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testTerbilangMilyaran' start
 Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testTerbilangMilyaran' ended
 Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testTerbilangTriliunan' started
 Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testTerbilangTriliunan' ended
+Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testTerbilangSeptiliun' started
+Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testTerbilangSeptiliun' ended
 Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testTerbilangDenganKoma' started
 Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testTerbilangDenganKoma' ended
 Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testAngkaKomaGanda' started
@@ -167,9 +176,7 @@ Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testShortcutMethod' started
 Test 'RioAstamal\AngkaTerbilang\Test\TerbilangTest::testShortcutMethod' ended
 
 
-Time: 51 ms, Memory: 4.00MB
-
-OK (14 tests, 101 assertions)
+Time: 174 ms, Memory: 4.00MB
 ```
 
 ## Penulis
@@ -179,3 +186,10 @@ Pustaka Terbilang ditulis oleh Rio Astamal <rio@rioastamal.net>
 ## Lisensi
 
 Pustaka ini menggunakan lisensi MIT [http://opensource.org/licenses/MIT](http://opensource.org/licenses/MIT).
+
+## Alternatif
+
+Terbilang menggunakan teknik bagi, modulus, dan rekursif. Terdapat beberapa pustaka sejenis dengan ini yang menggunakan teknik lain.
+
+* [https://github.com/mul14/terbilang-php](https://github.com/mul14/terbilang-php)
+* [https://github.com/pebriana/Fungsi-Terbilang-Rupiah](https://github.com/pebriana/Fungsi-Terbilang-Rupiah)
