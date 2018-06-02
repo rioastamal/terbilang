@@ -14,7 +14,7 @@ echo Terbilang::create()->terbilang('5678');
 // lima ribu enam ratus tujuh puluh delapan
 
 echo Terbilang::create()->terbilang('5000,000,000,000,000,000,000,000,000.0021');
-// 'lima ribu septiliun koma nol nol dua satu'
+// lima ribu septiliun koma nol nol dua satu
 ```
 
 ## Kebutuhan
