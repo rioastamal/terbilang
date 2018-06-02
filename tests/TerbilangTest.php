@@ -183,7 +183,15 @@ class TerbilangTest extends TestCase
         $septiliun = [
             '1,000,000,000,000,000,000,000,000' => 'satu septiliun',
             '1,000,000,000,000,000,000,000,211' => 'satu septiliun dua ratus sebelas',
-            '1,000,000,000,000,000,000,000,000.0001' => 'satu septiliun koma nol nol nol satu'
+            '1,000,000,000,000,000,000,000,000.0001' => 'satu septiliun koma nol nol nol satu',
+            '100,000,000,000,000,000,005,000,000.0001' => 'seratus septiliun lima juta koma nol nol nol satu',
+            '5000,000,000,000,000,000,000,000,000.0021' => 'lima ribu septiliun koma nol nol dua satu',
+            '1,000,000,000,000,000,150,000,000,000,000' => 'satu juta septiliun seratus lima puluh triliun',
+            '5,000,000,000,000,000,000,000,000,000,000,000' => 'lima milyar septiliun',
+            '5,000,000,000,000,000,000,000,000,000,000,000,000' => 'lima triliun septiliun',
+            '10,000,000,000,000,000,000,000,000,000,000,000,000' => 'sepuluh triliun septiliun',
+            '99,000,000,000,000,000,000,000,000,000,000,000,000' => 'sembilan puluh sembilan triliun septiliun',
+            '99,999,999,999,999,999,999,999,999,999,999,999,999' => 'sembilan puluh sembilan triliun sembilan ratus sembilan puluh sembilan milyar sembilan ratus sembilan puluh sembilan juta sembilan ratus sembilan puluh sembilan ribu sembilan ratus sembilan puluh sembilan septiliun sembilan ratus sembilan puluh sembilan milyar sembilan ratus sembilan puluh sembilan juta sembilan ratus sembilan puluh sembilan ribu sembilan ratus sembilan puluh sembilan triliun sembilan ratus sembilan puluh sembilan milyar sembilan ratus sembilan puluh sembilan juta sembilan ratus sembilan puluh sembilan ribu sembilan ratus sembilan puluh sembilan',
         ];
         foreach ($septiliun as $angka => $bilangan) {
             $this->assertEquals($bilangan, $this->terbilang->terbilang($angka));
