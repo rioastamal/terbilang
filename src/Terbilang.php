@@ -72,6 +72,10 @@ class Terbilang
      */
     public function terbilang($angka)
     {
+        if (! is_string($angka)) {
+            throw new TerbilangException('ERROR: Angka harus berupa string');
+        }
+
         // Hapus semua karakter yang bukan angka dan yang digunakan
         // oleh scientific notation seperti e,E,+ contoh 2.5E+2
         $angka = preg_replace('/([^0-9eE\+' . $this->pemisahDesimal . '])/', '', $angka);
@@ -103,11 +107,6 @@ class Terbilang
      */
     protected function terjemahkanAngka($angka)
     {
-        // BC Math tidak mensupport notasi scientific sepert 1.0E+5
-        // Jadi perlu diubah menjadi normal string number.
-        // Disini kita juga akan menghilangkan angka decimal dibelakang koma
-        $angka = explode('.', sprintf('%f', $angka))[0];
-
         // Angka dibawah 12 dapat langsung dimapping ke index array $bilangan
         if ($this->lebihKecilDari($angka, '12')) {
             return $this->bilangan[$angka];
@@ -221,10 +220,20 @@ class Terbilang
 
         // Angka triliunan. Angka diatas 1000 triliun tidak diubah
         // ke bentuk satuan lain seperti kuadriliun, dan seterusnya.
-        $hasilBagi = floor(bcdiv($angka, '1000000000000'));
-        $hasilMod = bcmod($angka, '1000000000000');
+        if ($this->lebihKecilDari($angka, '1000000000000000000000000')) {
+            $hasilBagi = floor(bcdiv($angka, '1000000000000'));
+            $hasilMod = bcmod($angka, '1000000000000');
 
-        return rtrim(sprintf('%s triliun %s',
+            return rtrim(sprintf('%s triliun %s',
+                $this->terjemahkanAngka($hasilBagi),
+                $this->terjemahkanAngka($hasilMod)
+            ));
+        }
+
+        $hasilBagi = floor(bcdiv($angka, '1000000000000000000000000'));
+        $hasilMod = bcmod($angka, '1000000000000000000000000');
+
+        return rtrim(sprintf('%s septiliun %s',
             $this->terjemahkanAngka($hasilBagi),
             $this->terjemahkanAngka($hasilMod)
         ));
@@ -255,7 +264,7 @@ class Terbilang
 
     protected function lebihKecilDari($x, $y)
     {
-        return (float)$x < (float)$y;
+        return bccomp($x, $y) === -1 ? true : false;
     }
 
     /**

@@ -28,110 +28,110 @@ class TerbilangTest extends TestCase
     {
         $terbilang = new Terbilang();
         $satuan = [
-            0 => 'nol',
-            1 => 'satu',
-            2 => 'dua',
-            3 => 'tiga',
-            4 => 'empat',
-            5 => 'lima',
-            6 => 'enam',
-            7 => 'tujuh',
-            8 => 'delapan',
-            9 => 'sembilan',
-            10 => 'sepuluh',
-            11 => 'sebelas'
+            '0' => 'nol',
+            '1' => 'satu',
+            '2' => 'dua',
+            '3' => 'tiga',
+            '4' => 'empat',
+            '5' => 'lima',
+            '6' => 'enam',
+            '7' => 'tujuh',
+            '8' => 'delapan',
+            '9' => 'sembilan',
+            '10' => 'sepuluh',
+            '11' => 'sebelas'
         ];
         foreach ($satuan as $angka => $bilangan) {
-            $this->assertEquals($bilangan, $this->terbilang->terbilang($angka));
+            $this->assertEquals($bilangan, $this->terbilang->terbilang((string)$angka));
         }
     }
 
     public function testTerbilangBelasan()
     {
         $belasan = [
-            12 => 'dua belas',
-            13 => 'tiga belas',
-            17 => 'tujuh belas',
-            19 => 'sembilan belas'
+            '12' => 'dua belas',
+            '13' => 'tiga belas',
+            '17' => 'tujuh belas',
+            '19' => 'sembilan belas'
         ];
         foreach ($belasan as $angka => $bilangan) {
-            $this->assertEquals($bilangan, $this->terbilang->terbilang($angka));
+            $this->assertEquals($bilangan, $this->terbilang->terbilang((string)$angka));
         }
     }
 
     public function testTerbilangPuluhan()
     {
         $puluhan = [
-            20 => 'dua puluh',
-            21 => 'dua puluh satu',
-            87 => 'delapan puluh tujuh',
-            99 => 'sembilan puluh sembilan'
+            '20' => 'dua puluh',
+            '21' => 'dua puluh satu',
+            '87' => 'delapan puluh tujuh',
+            '99' => 'sembilan puluh sembilan'
         ];
         foreach ($puluhan as $angka => $bilangan) {
-            $this->assertEquals($bilangan, $this->terbilang->terbilang($angka));
+            $this->assertEquals($bilangan, $this->terbilang->terbilang((string)$angka));
         }
     }
 
     public function testTerbilangRatusan()
     {
         $ratusan = [
-            100 => 'seratus',
-            105 => 'seratus lima',
-            111 => 'seratus sebelas',
-            119 => 'seratus sembilan belas',
-            187 => 'seratus delapan puluh tujuh',
-            199 => 'seratus sembilan puluh sembilan',
-            200 => 'dua ratus',
-            211 => 'dua ratus sebelas',
-            222 => 'dua ratus dua puluh dua',
-            999 => 'sembilan ratus sembilan puluh sembilan',
+            '100' => 'seratus',
+            '105' => 'seratus lima',
+            '111' => 'seratus sebelas',
+            '119' => 'seratus sembilan belas',
+            '187' => 'seratus delapan puluh tujuh',
+            '199' => 'seratus sembilan puluh sembilan',
+            '200' => 'dua ratus',
+            '211' => 'dua ratus sebelas',
+            '222' => 'dua ratus dua puluh dua',
+            '999' => 'sembilan ratus sembilan puluh sembilan',
         ];
         foreach ($ratusan as $angka => $bilangan) {
-            $this->assertEquals($bilangan, $this->terbilang->terbilang($angka));
+            $this->assertEquals($bilangan, $this->terbilang->terbilang((string)$angka));
         }
     }
 
     public function testTerbilangRibuan()
     {
         $ribuan = [
-            1000 => 'seribu',
-            1011 => 'seribu sebelas',
-            1111 => 'seribu seratus sebelas',
-            1119 => 'seribu seratus sembilan belas',
-            1187 => 'seribu seratus delapan puluh tujuh',
-            1199 => 'seribu seratus sembilan puluh sembilan',
-            2200 => 'dua ribu dua ratus',
-            2211 => 'dua ribu dua ratus sebelas',
-            4222 => 'empat ribu dua ratus dua puluh dua',
-            9999 => 'sembilan ribu sembilan ratus sembilan puluh sembilan',
-            10111 => 'sepuluh ribu seratus sebelas',
-            78521 => 'tujuh puluh delapan ribu lima ratus dua puluh satu',
-            99999 => 'sembilan puluh sembilan ribu sembilan ratus sembilan puluh sembilan',
-            100012 => 'seratus ribu dua belas',
-            999999 => 'sembilan ratus sembilan puluh sembilan ribu sembilan ratus sembilan puluh sembilan'
+            '1000' => 'seribu',
+            '1011' => 'seribu sebelas',
+            '1111' => 'seribu seratus sebelas',
+            '1119' => 'seribu seratus sembilan belas',
+            '1187' => 'seribu seratus delapan puluh tujuh',
+            '1199' => 'seribu seratus sembilan puluh sembilan',
+            '2200' => 'dua ribu dua ratus',
+            '2211' => 'dua ribu dua ratus sebelas',
+            '4222' => 'empat ribu dua ratus dua puluh dua',
+            '9999' => 'sembilan ribu sembilan ratus sembilan puluh sembilan',
+            '10111' => 'sepuluh ribu seratus sebelas',
+            '78521' => 'tujuh puluh delapan ribu lima ratus dua puluh satu',
+            '99999' => 'sembilan puluh sembilan ribu sembilan ratus sembilan puluh sembilan',
+            '100012' => 'seratus ribu dua belas',
+            '999999' => 'sembilan ratus sembilan puluh sembilan ribu sembilan ratus sembilan puluh sembilan'
         ];
         foreach ($ribuan as $angka => $bilangan) {
-            $this->assertEquals($bilangan, $this->terbilang->terbilang($angka));
+            $this->assertEquals($bilangan, $this->terbilang->terbilang((string)$angka));
         }
     }
 
     public function testTerbilangJutaan()
     {
         $jutaan = [
-            1000000 => 'satu juta',
-            1000011 => 'satu juta sebelas',
-            3250000 => 'tiga juta dua ratus lima puluh ribu',
-            9999999 => 'sembilan juta sembilan ratus sembilan puluh sembilan ribu sembilan ratus sembilan puluh sembilan',
-            11000000 => 'sebelas juta',
-            12000050 => 'dua belas juta lima puluh',
-            99999999 => 'sembilan puluh sembilan juta sembilan ratus sembilan puluh sembilan ribu sembilan ratus sembilan puluh sembilan',
-            100000000 => 'seratus juta',
-            100000001 => 'seratus juta satu',
-            787654321 => 'tujuh ratus delapan puluh tujuh juta enam ratus lima puluh empat ribu tiga ratus dua puluh satu',
-            999999999 => 'sembilan ratus sembilan puluh sembilan juta sembilan ratus sembilan puluh sembilan ribu sembilan ratus sembilan puluh sembilan'
+            '1000000' => 'satu juta',
+            '1000011' => 'satu juta sebelas',
+            '3250000' => 'tiga juta dua ratus lima puluh ribu',
+            '9999999' => 'sembilan juta sembilan ratus sembilan puluh sembilan ribu sembilan ratus sembilan puluh sembilan',
+            '11000000' => 'sebelas juta',
+            '12000050' => 'dua belas juta lima puluh',
+            '99999999' => 'sembilan puluh sembilan juta sembilan ratus sembilan puluh sembilan ribu sembilan ratus sembilan puluh sembilan',
+            '100000000' => 'seratus juta',
+            '100000001' => 'seratus juta satu',
+            '787654321' => 'tujuh ratus delapan puluh tujuh juta enam ratus lima puluh empat ribu tiga ratus dua puluh satu',
+            '999999999' => 'sembilan ratus sembilan puluh sembilan juta sembilan ratus sembilan puluh sembilan ribu sembilan ratus sembilan puluh sembilan'
         ];
         foreach ($jutaan as $angka => $bilangan) {
-            $this->assertEquals($bilangan, $this->terbilang->terbilang($angka));
+            $this->assertEquals($bilangan, $this->terbilang->terbilang((string)$angka));
         }
     }
 
@@ -150,7 +150,7 @@ class TerbilangTest extends TestCase
             '999999999999' => 'sembilan ratus sembilan puluh sembilan milyar sembilan ratus sembilan puluh sembilan juta sembilan ratus sembilan puluh sembilan ribu sembilan ratus sembilan puluh sembilan'
         ];
         foreach ($milyaran as $angka => $bilangan) {
-            $this->assertEquals($bilangan, $this->terbilang->terbilang($angka));
+            $this->assertEquals($bilangan, $this->terbilang->terbilang((string)$angka));
         }
     }
 
@@ -174,6 +174,18 @@ class TerbilangTest extends TestCase
             '1000000000000000000000' => 'satu milyar triliun',
         ];
         foreach ($triliunan as $angka => $bilangan) {
+            $this->assertEquals($bilangan, $this->terbilang->terbilang((string)$angka));
+        }
+    }
+
+    public function testTerbilangSeptiliun()
+    {
+        $septiliun = [
+            '1,000,000,000,000,000,000,000,000' => 'satu septiliun',
+            '1,000,000,000,000,000,000,000,211' => 'satu septiliun dua ratus sebelas',
+            '1,000,000,000,000,000,000,000,000.0001' => 'satu septiliun koma nol nol nol satu'
+        ];
+        foreach ($septiliun as $angka => $bilangan) {
             $this->assertEquals($bilangan, $this->terbilang->terbilang($angka));
         }
     }
