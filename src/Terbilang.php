@@ -103,13 +103,13 @@ class Terbilang
      */
     protected function terjemahkanAngka($angka)
     {
-        $angkaAsli = $angka;
-
-        // pastikan kita hanya berususan dengan tipe data numeric
-        $angka = (float)$angka;
+        // BC Math tidak mensupport notasi scientific sepert 1.0E+5
+        // Jadi perlu diubah menjadi normal string number.
+        // Disini kita juga akan menghilangkan angka decimal dibelakang koma
+        $angka = explode('.', sprintf('%f', $angka))[0];
 
         // Angka dibawah 12 dapat langsung dimapping ke index array $bilangan
-        if ($angka < 12) {
+        if ($this->lebihKecilDari($angka, '12')) {
             return $this->bilangan[$angka];
         }
 
@@ -120,7 +120,7 @@ class Terbilang
         // Contoh:
         // 1. 18 - 10 = 8 -> index ke-8 + 'belas'
         // 2. 17 - 10 = 7 -> index ke-7 + 'belas'
-        if ($angka < 20) {
+        if ($this->lebihKecilDari($angka, '20')) {
             return $this->bilangan[$angka - 10] . ' belas';
         }
 
@@ -131,7 +131,7 @@ class Terbilang
         // Contoh angka 48:
         // 48 / 10 = 4.8 => dibulatkan -> 4 -> index ke-4 + 'puluh'
         // 48 % 10 = 8 -> index ke-8
-        if ($angka < 100) {
+        if ($this->lebihKecilDari($angka, '100')) {
             $hasilBagi = floor($angka / 10);
             $hasilMod = $angka % 10;
 
@@ -151,8 +151,8 @@ class Terbilang
         //
         // Contoh 125:
         // 125 - 100 = 25 -> 'seratus ' + terjemahkanAngka(25)
-        if ($angka < 200) {
-            return rtrim(sprintf('seratus %s', static::terjemahkanAngka($angka - 100)));
+        if ($this->lebihKecilDari($angka, '200')) {
+            return rtrim(sprintf('seratus %s', $this->terjemahkanAngka($angka - 100)));
         }
 
         // Angka ratusan didapat mirip dengan cara mendapatkan angka puluhan.
@@ -166,7 +166,7 @@ class Terbilang
         // Contoh 499:
         // 499 / 100 = 4.99 => dibulatkan -> 4 -> index ke-4 + ' ratus'
         // 499 % 100 = 99 -> terjemahkanAngka(99)
-        if ($angka < 1000) {
+        if ($this->lebihKecilDari($angka, '1000')) {
             $hasilBagi = floor($angka / 100);
             $hasilMod = $angka % 100;
 
@@ -180,12 +180,12 @@ class Terbilang
         //
         // Contoh 1011:
         // 1011 - 1000 = 11 => 'seribu ' + terjemahkanAngka(11)
-        if ($angka < 2000) {
+        if ($this->lebihKecilDari($angka, '2000')) {
             return rtrim(sprintf('seribu %s', $this->terjemahkanAngka($angka - 1000)));
         }
 
         // Angka ribuan sampai ratusan ribu
-        if ($angka < 1000000) {
+        if ($this->lebihKecilDari($angka, '1000000')) {
             $hasilBagi = floor($angka / 1000);
             $hasilMod = $angka % 1000;
 
@@ -196,7 +196,7 @@ class Terbilang
         }
 
         // Angka jutaan sampai ratusan juta (dibawah 1 Milyar)
-        if ($angka < 1000000000) {
+        if ($this->lebihKecilDari($angka, '1000000000')) {
             $hasilBagi = floor($angka / 1000000);
             $hasilMod = $angka % 1000000;
 
@@ -206,17 +206,12 @@ class Terbilang
             ));
         }
 
-        // BC Math tidak mensupport notasi scientific sepert 1.0E+5
-        // Jadi perlu diubah menjadi normal string number.
-        // Disini kita juga akan menghilangkan angka decimal dibelakang koma
-        $angkaAsli = explode('.', sprintf('%f', $angkaAsli))[0];
-
         // Angka milyaran sampai ratusan milyar (dibawah 1 Triliun)
         // Karena angka cukup besar dan sistem 32 bit hanya sampai pada
         // kisaran 2 Milyar, maka digunakan extension BC Math.
-        if (bccomp($angkaAsli, '1000000000000') === -1) {
-            $hasilBagi = floor(bcdiv($angkaAsli, '1000000000'));
-            $hasilMod = bcmod($angkaAsli, '1000000000');
+        if ($this->lebihKecilDari($angka, '1000000000000')) {
+            $hasilBagi = floor(bcdiv($angka, '1000000000'));
+            $hasilMod = bcmod($angka, '1000000000');
 
             return rtrim(sprintf('%s milyar %s',
                 $this->terjemahkanAngka($hasilBagi),
@@ -226,8 +221,8 @@ class Terbilang
 
         // Angka triliunan. Angka diatas 1000 triliun tidak diubah
         // ke bentuk satuan lain seperti kuadriliun, dan seterusnya.
-        $hasilBagi = floor(bcdiv($angkaAsli, '1000000000000'));
-        $hasilMod = bcmod($angkaAsli, '1000000000000');
+        $hasilBagi = floor(bcdiv($angka, '1000000000000'));
+        $hasilMod = bcmod($angka, '1000000000000');
 
         return rtrim(sprintf('%s triliun %s',
             $this->terjemahkanAngka($hasilBagi),
@@ -256,6 +251,11 @@ class Terbilang
         }
 
         return implode(' ', $terbilang);
+    }
+
+    protected function lebihKecilDari($x, $y)
+    {
+        return (float)$x < (float)$y;
     }
 
     /**
