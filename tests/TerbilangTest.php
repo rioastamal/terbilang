@@ -24,6 +24,11 @@ class TerbilangTest extends TestCase
         $this->assertTrue($terbilang instanceof \RioAstamal\AngkaTerbilang\Terbilang);
     }
 
+    public function testVersiPustaka()
+    {
+        $this->assertEquals('1.0', Terbilang::VERSION);
+    }
+
     public function testTerbilangKurangDari12()
     {
         $terbilang = new Terbilang();

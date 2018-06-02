@@ -25,7 +25,16 @@ namespace RioAstamal\AngkaTerbilang;
 class Terbilang
 {
     /**
+     * Versi dari pustaka
+     *
+     * @var string
+     */
+    public const VERSION = '1.0';
+
+    /**
      * Pemisah angka desimal dibelakang koma.
+     *
+     * @var string
      */
     protected $pemisahDesimal;
 
