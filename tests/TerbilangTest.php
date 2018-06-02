@@ -167,7 +167,11 @@ class TerbilangTest extends TestCase
             '999999999999999' => 'sembilan ratus sembilan puluh sembilan triliun sembilan ratus sembilan puluh sembilan milyar sembilan ratus sembilan puluh sembilan juta sembilan ratus sembilan puluh sembilan ribu sembilan ratus sembilan puluh sembilan',
             '1000000000000000' => 'seribu triliun',
             '3500000000000000' => 'tiga ribu lima ratus triliun',
-            '11000000001000222' => 'sebelas ribu triliun satu juta dua ratus dua puluh dua'
+            '11000000001000222' => 'sebelas ribu triliun satu juta dua ratus dua puluh dua',
+            '100000000000000000' => 'seratus ribu triliun',
+            '1000000000000000000' => 'satu juta triliun',
+            '100000000000000000000' => 'seratus juta triliun',
+            '1000000000000000000000' => 'satu milyar triliun',
         ];
         foreach ($triliunan as $angka => $bilangan) {
             $this->assertEquals($bilangan, $this->terbilang->terbilang($angka));
