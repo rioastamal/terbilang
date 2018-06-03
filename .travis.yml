@@ -22,7 +22,7 @@ install:
 
 script:
   - if [[ $SKIP_UNIT_TEST = 'y' ]]; then echo "No unit test. done"; fi
-  - if [[ $SKIP_UNIT_TEST != 'y' ]]; then ./vendor/bin/phpunit --coverage-clover=coverage.xml --debug; fi
+  - if [[ $SKIP_UNIT_TEST != 'y' ]]; then ./vendor/bin/phpunit --whitelist src/ --coverage-clover=coverage.xml --debug; fi
 
 after_success:
   - if [[ $SKIP_UNIT_TEST != 'y' ]]; then bash <(curl -s https://codecov.io/bash); fi
