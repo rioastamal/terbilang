@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/rioastamal/terbilang.svg?branch=master)](https://travis-ci.org/rioastamal/terbilang)
+[![Latest Stable Version](https://poser.pugx.org/rioastamal/terbilang/v/stable)](https://packagist.org/packages/rioastamal/terbilang)
+[![License](https://poser.pugx.org/rioastamal/terbilang/license)](https://packagist.org/packages/rioastamal/terbilang)
 
 ## Tentang
 
