@@ -230,6 +230,15 @@ class TerbilangTest extends TestCase
         $this->terbilang->terbilang($angka);
     }
 
+    /**
+     * @expectedException RioAstamal\AngkaTerbilang\TerbilangException
+     * @expectedExceptionMessage ERROR: Angka harus berupa string
+     */
+    public function testAngkaHarusString()
+    {
+        $this->terbilang->terbilang(1005);
+    }
+
     public function testPemisahRibuanDenganBeberapaPemisah()
     {
         $pemisahRibuan = [
