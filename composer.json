@@ -23,7 +23,10 @@
     "autoload": {
         "psr-4": {
             "RioAstamal\\AngkaTerbilang\\": "src/"
-        }
+        },
+        "files": [
+            "src/TerbilangHelper.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

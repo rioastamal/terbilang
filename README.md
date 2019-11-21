@@ -20,6 +20,17 @@ echo Terbilang::create()->terbilang('5000,000,000,000,000,000,000,000,000.0021')
 // lima ribu septiliun koma nol nol dua satu
 ```
 
+Atau bisa menggunakan fungsi helper `terbilang`.
+
+```php
+<?php
+echo terbilang('5678');
+// lima ribu enam ratus tujuh puluh delapan
+
+echo terbilang('5000,000,000,000,000,000,000,000,000.0021');
+// lima ribu septiliun koma nol nol dua satu
+```
+
 ## Kebutuhan
 
 - PHP >= 5.5
@@ -46,12 +57,13 @@ $ git clone git@github.com:rioastamal/terbilang.git
 $ cd terbilang
 ```
 
-Pustaka Terbilang hanya terdiri dari sebuah file jadi cukup menggunakan `require` pada file Terbilang.php dan Terbilang sudah siap digunakan.
+Pustaka Terbilang terdiri dari dua file, cukup menggunakan `require` pada file Terbilang.php dan TerbilangHelper.php sudah siap digunakan.
 
 ```php
 <?php
 
 require '/path/ke/terbilang/src/Terbilang.php';
+require '/path/ke/terbilang/src/TerbilangHelper.php';
 ```
 
 ### Instalasi bcmath

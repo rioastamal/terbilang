@@ -4,6 +4,8 @@ namespace RioAstamal\AngkaTerbilang\Test;
 use PHPUnit\Framework\TestCase;
 use RioAstamal\AngkaTerbilang\Terbilang;
 
+require_once __DIR__ . '/../src/TerbilangHelper.php';
+
 class TerbilangTest extends TestCase
 {
     protected $terbilang = null;
@@ -48,6 +50,7 @@ class TerbilangTest extends TestCase
         ];
         foreach ($satuan as $angka => $bilangan) {
             $this->assertEquals($bilangan, $this->terbilang->terbilang((string)$angka));
+            $this->assertEquals($bilangan, terbilang((string)$angka));
         }
     }
 
@@ -61,6 +64,7 @@ class TerbilangTest extends TestCase
         ];
         foreach ($belasan as $angka => $bilangan) {
             $this->assertEquals($bilangan, $this->terbilang->terbilang((string)$angka));
+            $this->assertEquals($bilangan, terbilang((string)$angka));
         }
     }
 
@@ -74,6 +78,7 @@ class TerbilangTest extends TestCase
         ];
         foreach ($puluhan as $angka => $bilangan) {
             $this->assertEquals($bilangan, $this->terbilang->terbilang((string)$angka));
+            $this->assertEquals($bilangan, terbilang((string)$angka));
         }
     }
 
@@ -93,6 +98,7 @@ class TerbilangTest extends TestCase
         ];
         foreach ($ratusan as $angka => $bilangan) {
             $this->assertEquals($bilangan, $this->terbilang->terbilang((string)$angka));
+            $this->assertEquals($bilangan, terbilang((string)$angka));
         }
     }
 
@@ -117,6 +123,7 @@ class TerbilangTest extends TestCase
         ];
         foreach ($ribuan as $angka => $bilangan) {
             $this->assertEquals($bilangan, $this->terbilang->terbilang((string)$angka));
+            $this->assertEquals($bilangan, terbilang((string)$angka));
         }
     }
 
@@ -137,6 +144,7 @@ class TerbilangTest extends TestCase
         ];
         foreach ($jutaan as $angka => $bilangan) {
             $this->assertEquals($bilangan, $this->terbilang->terbilang((string)$angka));
+            $this->assertEquals($bilangan, terbilang((string)$angka));
         }
     }
 
@@ -156,6 +164,7 @@ class TerbilangTest extends TestCase
         ];
         foreach ($milyaran as $angka => $bilangan) {
             $this->assertEquals($bilangan, $this->terbilang->terbilang((string)$angka));
+            $this->assertEquals($bilangan, terbilang((string)$angka));
         }
     }
 
@@ -180,6 +189,7 @@ class TerbilangTest extends TestCase
         ];
         foreach ($triliunan as $angka => $bilangan) {
             $this->assertEquals($bilangan, $this->terbilang->terbilang((string)$angka));
+            $this->assertEquals($bilangan, terbilang((string)$angka));
         }
     }
 
@@ -202,6 +212,7 @@ class TerbilangTest extends TestCase
         ];
         foreach ($septiliun as $angka => $bilangan) {
             $this->assertEquals($bilangan, $this->terbilang->terbilang($angka));
+            $this->assertEquals($bilangan, terbilang($angka));
         }
     }
 
@@ -217,6 +228,7 @@ class TerbilangTest extends TestCase
         ];
         foreach ($angkaKoma as $angka => $bilangan) {
             $this->assertEquals($bilangan, $this->terbilang->terbilang($angka));
+            $this->assertEquals($bilangan, terbilang($angka));
         }
     }
 
@@ -228,6 +240,7 @@ class TerbilangTest extends TestCase
     {
         $angka = '123.22.22';
         $this->terbilang->terbilang($angka);
+        terbilang($angka);
     }
 
     /**
@@ -250,6 +263,7 @@ class TerbilangTest extends TestCase
         ];
         foreach ($pemisahRibuan as $angka => $bilangan) {
             $this->assertEquals($bilangan, $this->terbilang->terbilang($angka));
+            $this->assertEquals($bilangan, terbilang($angka));
         }
     }
 
@@ -265,6 +279,7 @@ class TerbilangTest extends TestCase
         ];
         foreach ($pemisahRibuan as $angka => $bilangan) {
             $this->assertEquals($bilangan, $this->terbilang->terbilang($angka));
+            $this->assertEquals($bilangan, terbilang($angka, ','));
         }
     }
 
@@ -280,6 +295,7 @@ class TerbilangTest extends TestCase
         ];
         foreach ($pemisahRibuan as $angka => $bilangan) {
             $this->assertEquals($bilangan, $this->terbilang->t($angka));
+            $this->assertEquals($bilangan, terbilang($angka, ','));
         }
     }
 }
