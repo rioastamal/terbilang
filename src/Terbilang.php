@@ -273,7 +273,7 @@ class Terbilang
         $length = strlen($angka);
 
         for ($i=0; $i<$length; $i++) {
-            $index = (int)$angka{$i};
+            $index = (int)$angka[$i];
             $terbilang[] = $bilangan[$index];
         }
 
