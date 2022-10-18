@@ -1,10 +1,9 @@
 <?php
 namespace RioAstamal\AngkaTerbilang\Test;
 
-use PHPUnit\Framework\TestCase;
 use RioAstamal\AngkaTerbilang\Terbilang;
 
-class TerbilangTest extends TestCase
+class TerbilangTest extends \PHPUnit_Framework_TestCase
 {
     protected $terbilang = null;
 
